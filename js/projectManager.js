@@ -2,6 +2,16 @@ let project = null;
 let currentWallIndex = 0;
 let isDirty = false;
 
+function loadProject() {
+  const data = localStorage.getItem("layoutProject");
+  if (!data) {
+    return {
+      walls: []
+    };
+  }
+  return JSON.parse(data);
+}
+
 function createNewProject(name) {
   project = {
     id: crypto.randomUUID(),
