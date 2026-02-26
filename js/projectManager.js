@@ -1,4 +1,4 @@
-let project = null;
+let project = loadProject();
 let currentWallIndex = 0;
 let isDirty = false;
 
