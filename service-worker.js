@@ -6,6 +6,11 @@ self.addEventListener("install", event => {
         "./index.html",
         "./css/styles.css",
         "./js/app.js"
+        "./js/Formatter.js"
+        "./js/layoutEngine.js"
+        "./js/svgRenderer.js"
+        ".js/projectManager.js"
+        "./js/pdfGenerator.js"
       ]);
     })
   );
