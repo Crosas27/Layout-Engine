@@ -1,6 +1,12 @@
 document.getElementById("renderBtn").addEventListener("click", () => {
   const wall = project.walls[currentWallIndex];
 
+  import {
+    loadProject,
+    saveProject,
+    addWall
+  } from "./projectManager.js";
+
   wall.length = parseFloat(document.getElementById("wallLength").value);
   wall.panelCoverage = parseFloat(document.getElementById("panelCoverage").value);
   wall.ribSpacing = parseFloat(document.getElementById("ribSpacing").value);
