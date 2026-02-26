@@ -1,6 +1,6 @@
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open("layout-engine-v1").then(cache => {
+    caches.open("Layout-Engine").then(cache => {
       return cache.addAll([
         "./",
         "./index.html",
