@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Layout Engine</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="project-info">
+      <span id="projectName">No Project Loaded</span>
+      <span id="saveStatus">Last Saved: —</span>
+    </div>
+    <div class="controls">
+      <button id="themeToggle">🌙</button>
+      <button id="saveBtn">Save</button>
+      <button id="menuBtn">Menu</button>
+    </div>
+  </header>
+
+  <nav class="wall-tabs" id="wallTabs"></nav>
+
+  <main>
+    <section class="layout-controls">
+      <label>Wall Length (inches)
+        <input type="number" id="wallLength" />
+      </label>
+
+      <label>Panel Coverage (inches)
+        <input type="number" id="panelCoverage" />
+      </label>
+
+      <label>Rib Spacing (inches)
+        <input type="number" id="ribSpacing" />
+      </label>
+
+      <label>Offset (inches)
+        <input type="number" id="offset" />
+      </label>
+
+      <label>Threshold (inches)
+        <input type="number" id="threshold" />
+      </label>
+
+      <button id="renderBtn">Render</button>
+    </section>
+
+    <section class="svg-container">
+      <svg id="ribMap"></svg>
+    </section>
+  </main>
+
+  <script src="js/formatter.js"></script>
+  <script src="js/layoutEngine.js"></script>
+  <script src="js/svgRenderer.js"></script>
+  <script src="js/projectManager.js"></script>
+  <script src="js/pdfGenerator.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+
+</body>
+</html>
