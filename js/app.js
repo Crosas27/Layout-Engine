@@ -1,11 +1,11 @@
-document.getElementById("renderBtn").addEventListener("click", () => {
-  const wall = project.walls[currentWallIndex];
-
   import {
     loadProject,
     saveProject,
     addWall
   } from "./projectManager.js";
+
+document.getElementById("renderBtn").addEventListener("click", () => {
+  const wall = project.walls[currentWallIndex];
 
   wall.length = parseFloat(document.getElementById("wallLength").value);
   wall.panelCoverage = parseFloat(document.getElementById("panelCoverage").value);
@@ -15,4 +15,8 @@ document.getElementById("renderBtn").addEventListener("click", () => {
 
   renderRibs(wall);
   isDirty = true;
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+   // event listeners here
 });
