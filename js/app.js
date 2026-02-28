@@ -62,8 +62,10 @@ function wireUI() {
 // -------------------------------
 // Handle Render
 // -------------------------------
-function handleRender() {
+function handleRender() 
 
+{ console.log("Render button clicked");
+ 
   const wall = project.walls[currentWallIndex];
 
   if (!wall) {
