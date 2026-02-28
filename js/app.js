@@ -84,6 +84,37 @@ function handleRender() {
   console.log("Render complete.");
 }
 
+function calculateRibs(wall) {
+
+  const ribs = calculateRibs(wall);
+
+console.log("Ribs:", ribs);
+
+  const length = wall.length || 0;
+  const spacing = wall.ribSpacing || 0;
+  const offset = wall.offset || 0;
+
+  if (spacing <= 0) {
+    console.warn("Invalid rib spacing.");
+    return ribs;
+  }
+
+  let position = offset;
+  let index = 1;
+
+  while (position <= length) {
+
+    ribs.push({
+      index: index,
+      position: parseFloat(position.toFixed(4)) // keeps floating point clean
+    });
+
+    position += spacing;
+    index++;
+  }
+
+  return ribs;
+}
 
 // -------------------------------
 // Stub Render Function (Temporary)
