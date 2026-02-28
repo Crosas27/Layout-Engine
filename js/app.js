@@ -114,6 +114,8 @@ console.log("Ribs:", ribs);
     position += spacing;
     index++;
   }
+  
+  console.log("Calculated ribs:", ribs);
 
   return ribs;
 }
