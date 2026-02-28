@@ -62,16 +62,13 @@ function wireUI() {
 // -------------------------------
 // Handle Render
 // -------------------------------
-function handleRender() 
+function handleRender() {
 
-{ console.log("Render button clicked");
- 
+  console.log("Render button clicked");
+
   const wall = project.walls[currentWallIndex];
 
-  if (!wall) {
-    console.warn("No wall found.");
-    return;
-  }
+  console.log("Wall before update:", wall);
 
   wall.length = parseFloat(document.getElementById("wallLength")?.value) || 0;
   wall.panelCoverage = parseFloat(document.getElementById("panelCoverage")?.value) || 0;
@@ -79,46 +76,17 @@ function handleRender()
   wall.offset = parseFloat(document.getElementById("offset")?.value) || 0;
   wall.threshold = parseFloat(document.getElementById("threshold")?.value) || 0;
 
-  renderRibs(wall);
+  console.log("Wall after update:", wall);
+
+  const ribs = calculateRibs(wall);
+
+  console.log("Calculated ribs:", ribs);
 
   isDirty = true;
 
   console.log("Render complete.");
 }
 
-function calculateRibs(wall) {
-
-  const ribs = calculateRibs(wall);
-
-console.log("Ribs:", ribs);
-
-  const length = wall.length || 0;
-  const spacing = wall.ribSpacing || 0;
-  const offset = wall.offset || 0;
-
-  if (spacing <= 0) {
-    console.warn("Invalid rib spacing.");
-    return ribs;
-  }
-
-  let position = offset;
-  let index = 1;
-
-  while (position <= length) {
-
-    ribs.push({
-      index: index,
-      position: parseFloat(position.toFixed(4)) // keeps floating point clean
-    });
-
-    position += spacing;
-    index++;
-  }
-  
-  console.log("Calculated ribs:", ribs);
-
-  return ribs;
-}
 
 // -------------------------------
 // Stub Render Function (Temporary)
