@@ -23,7 +23,7 @@ function displayRibs(ribs) {
   let html = "<h3>Rib Layout</h3><ul>";
 
   ribs.forEach(rib => {
-    html += `<li>Rib ${rib.index} — ${rib.position}"</li>`;
+    html += `<li>Rib ${rib.index} — ${formatToField(rib.position)}</li>`;
   });
 
   html += "</ul>";
