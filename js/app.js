@@ -17,8 +17,6 @@ function displayRibs(ribs)
     container.innerHTML = "<p>No ribs calculated.</p>";
     return;}
 
- renderSvg(wall, ribs);
-
   const wall = project.walls[currentWallIndex];
   const lastRib = ribs[ribs.length - 1];
   const remaining = wall.length - lastRib.position;
@@ -114,6 +112,7 @@ function handleRender() {
   const ribs = calculateRibs(wall);
 
   displayRibs(ribs);
+  renderSvg(wall, ribs);
 }
 
 function calculateRibs(wall) {
