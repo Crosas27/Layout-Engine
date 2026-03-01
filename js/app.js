@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function displayRibs(ribs) {
 
   const container = document.getElementById("ribOutput");
-
   if (!container) return;
 
   if (ribs.length === 0) {
@@ -20,13 +19,31 @@ function displayRibs(ribs) {
     return;
   }
 
+  const wall = project.walls[currentWallIndex];
+  const lastRib = ribs[ribs.length - 1];
+  const remaining = wall.length - lastRib.position;
+
   let html = "<h3>Rib Layout</h3><ul>";
 
   ribs.forEach(rib => {
-    html += `<li><strong>Rib ${rib.index}</strong> — ${formatToField(rib.position)} <span style="opacity:0.6;">(${rib.position}")</span></li>`;
+    html += `
+      <li>
+        <strong>Rib ${rib.index}</strong> — 
+        ${formatToField(rib.position)} 
+        <span style="opacity:0.6;">(${rib.position}")</span>
+      </li>`;
   });
 
   html += "</ul>";
+
+  html += `
+    <hr>
+    <div>
+      <strong>Remaining:</strong> 
+      ${formatToField(remaining)} 
+      <span style="opacity:0.6;">(${remaining}")</span>
+    </div>
+  `;
 
   container.innerHTML = html;
 }
