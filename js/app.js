@@ -101,18 +101,20 @@ function wireUI() {
 }
 
 function handleRender() {
-  console.log("Render button clicked");
 
   const wall = project.walls[currentWallIndex];
 
-  wall.length = parseFloat(document.getElementById("wallLength")?.value) || 0;
-  wall.ribSpacing = parseFloat(document.getElementById("ribSpacing")?.value) || 0;
-  wall.offset = parseFloat(document.getElementById("offset")?.value) || 0;
+  wall.length = parseFloat(document.getElementById("wallLength").value);
+  wall.panelCoverage = parseFloat(document.getElementById("panelCoverage").value);
+  wall.ribSpacing = parseFloat(document.getElementById("ribSpacing").value);
+  wall.offset = parseFloat(document.getElementById("offset").value);
+  wall.threshold = parseFloat(document.getElementById("threshold").value);
 
   const ribs = calculateRibs(wall);
 
   displayRibs(ribs);
   renderSvg(wall, ribs);
+
 }
 
 function calculateRibs(wall) {
