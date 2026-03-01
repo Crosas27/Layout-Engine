@@ -49,7 +49,7 @@ function handleRender() {
 
   const ribs = calculateRibs(wall);
 
-  console.log("Calculated ribs:", ribs);
+  displayRibs(ribs);
 }
 
 function calculateRibs(wall) {
