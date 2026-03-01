@@ -9,6 +9,28 @@ document.addEventListener("DOMContentLoaded", () => {
   wireUI();
 });
 
+function displayRibs(ribs) {
+
+  const container = document.getElementById("ribOutput");
+
+  if (!container) return;
+
+  if (ribs.length === 0) {
+    container.innerHTML = "<p>No ribs calculated.</p>";
+    return;
+  }
+
+  let html = "<h3>Rib Layout</h3><ul>";
+
+  ribs.forEach(rib => {
+    html += `<li>Rib ${rib.index} — ${rib.position}"</li>`;
+  });
+
+  html += "</ul>";
+
+  container.innerHTML = html;
+}
+
 function wireUI() {
   const renderBtn = document.getElementById("renderBtn");
   if (renderBtn) {
