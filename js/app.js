@@ -140,3 +140,43 @@ function calculateRibs(wall) {
 
   return ribs;
 }
+
+function renderSvg(wall, ribs) {
+
+  const svg = document.getElementById("wallSvg");
+  if (!svg) return;
+
+  svg.innerHTML = ""; // clear previous render
+
+  const wallLength = wall.length;
+  const svgWidth = svg.clientWidth;
+  const svgHeight = 200;
+
+  svg.setAttribute("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
+
+  const scale = svgWidth / wallLength;
+
+  // Draw wall outline
+  const wallRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  wallRect.setAttribute("x", 0);
+  wallRect.setAttribute("y", 20);
+  wallRect.setAttribute("width", wallLength * scale);
+  wallRect.setAttribute("height", 120);
+  wallRect.setAttribute("class", "wall-outline");
+
+  svg.appendChild(wallRect);
+
+  // Draw ribs
+  ribs.forEach(rib => {
+    const xPos = rib.position * scale;
+
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", xPos);
+    line.setAttribute("y1", 20);
+    line.setAttribute("x2", xPos);
+    line.setAttribute("y2", 140);
+    line.setAttribute("class", "rib-line");
+
+    svg.appendChild(line);
+  });
+}
