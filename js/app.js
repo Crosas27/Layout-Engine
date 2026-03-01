@@ -9,15 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   wireUI();
 });
 
-function displayRibs(ribs) {
-
-  const container = document.getElementById("ribOutput");
+function displayRibs(ribs) 
+{const container = document.getElementById("ribOutput");
   if (!container) return;
 
   if (ribs.length === 0) {
     container.innerHTML = "<p>No ribs calculated.</p>";
-    return;
-  }
+    return;}
+
+ renderSvg(wall, ribs);
 
   const wall = project.walls[currentWallIndex];
   const lastRib = ribs[ribs.length - 1];
