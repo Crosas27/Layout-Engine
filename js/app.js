@@ -156,6 +156,25 @@ function renderSvg(wall, ribs) {
   svg.setAttribute("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
 
   const scale = svgWidth / wallLength;
+  
+  // Shade alternating panels
+let panelIndex = 0;
+
+for (let x = 0; x < wall.length; x += panelCoverage) {
+  const panelWidth = Math.min(panelCoverage, wall.length - x);
+  const panelX = x * scale;
+
+  const panelRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  panelRect.setAttribute("x", panelX);
+  panelRect.setAttribute("y", 20);
+  panelRect.setAttribute("width", panelWidth * scale);
+  panelRect.setAttribute("height", 120);
+  panelRect.setAttribute("fill", panelIndex % 2 === 0 ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.06)");
+
+  svg.appendChild(panelRect);
+
+  panelIndex++;
+}
 
   // Draw wall outline
   const wallRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -177,30 +196,11 @@ for (let x = panelCoverage; x < wall.length; x += panelCoverage) {
   seamLine.setAttribute("y1", 20);
   seamLine.setAttribute("x2", seamX);
   seamLine.setAttribute("y2", 140);
-  seamLine.setAttribute("stroke", "#888");
-  seamLine.setAttribute("stroke-width", "3");
-  seamLine.setAttribute("opacity", "0.4");
+  seamLine.setAttribute("stroke", "#aaa");
+  seamLine.setAttribute("stroke-width", "4");
+  seamLine.setAttribute("opacity", "0.6");
 
   svg.appendChild(seamLine);
-}
-
-// Shade alternating panels
-let panelIndex = 0;
-
-for (let x = 0; x < wall.length; x += panelCoverage) {
-  const panelWidth = Math.min(panelCoverage, wall.length - x);
-  const panelX = x * scale;
-
-  const panelRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  panelRect.setAttribute("x", panelX);
-  panelRect.setAttribute("y", 20);
-  panelRect.setAttribute("width", panelWidth * scale);
-  panelRect.setAttribute("height", 120);
-  panelRect.setAttribute("fill", panelIndex % 2 === 0 ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.06)");
-
-  svg.appendChild(panelRect);
-
-  panelIndex++;
 }
 
   // Draw ribs
