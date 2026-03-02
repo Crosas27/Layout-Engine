@@ -184,6 +184,25 @@ for (let x = panelCoverage; x < wall.length; x += panelCoverage) {
   svg.appendChild(seamLine);
 }
 
+// Shade alternating panels
+let panelIndex = 0;
+
+for (let x = 0; x < wall.length; x += panelCoverage) {
+  const panelWidth = Math.min(panelCoverage, wall.length - x);
+  const panelX = x * scale;
+
+  const panelRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  panelRect.setAttribute("x", panelX);
+  panelRect.setAttribute("y", 20);
+  panelRect.setAttribute("width", panelWidth * scale);
+  panelRect.setAttribute("height", 120);
+  panelRect.setAttribute("fill", panelIndex % 2 === 0 ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.06)");
+
+  svg.appendChild(panelRect);
+
+  panelIndex++;
+}
+
   // Draw ribs
   ribs.forEach(rib => {
     const xPos = rib.position * scale;
