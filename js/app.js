@@ -166,6 +166,23 @@ function renderSvg(wall, ribs) {
   wallRect.setAttribute("class", "wall-outline");
 
   svg.appendChild(wallRect);
+  
+  // Draw panel seams
+const panelCoverage = wall.panelCoverage;
+for (let x = panelCoverage; x < wall.length; x += panelCoverage) {
+  const seamX = x * scale;
+
+  const seamLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  seamLine.setAttribute("x1", seamX);
+  seamLine.setAttribute("y1", 20);
+  seamLine.setAttribute("x2", seamX);
+  seamLine.setAttribute("y2", 140);
+  seamLine.setAttribute("stroke", "#888");
+  seamLine.setAttribute("stroke-width", "3");
+  seamLine.setAttribute("opacity", "0.4");
+
+  svg.appendChild(seamLine);
+}
 
   // Draw ribs
   ribs.forEach(rib => {
