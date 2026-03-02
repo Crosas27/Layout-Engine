@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function displayRibs(ribs){ 
-{const container = document.getElementById("ribOutput");
+const container = document.getElementById("ribOutput");
   if (!container) return;
 
   if (ribs.length === 0) {
@@ -156,7 +156,8 @@ function renderSvg(wall, ribs) {
   svg.setAttribute("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
 
   const scale = svgWidth / wallLength;
-  
+  const panelCoverage = wall.panelCoverage;
+
   // Shade alternating panels
 let panelIndex = 0;
 
@@ -187,7 +188,7 @@ for (let x = 0; x < wall.length; x += panelCoverage) {
   svg.appendChild(wallRect);
   
   // Draw panel seams
-const panelCoverage = wall.panelCoverage;
+  
 for (let x = panelCoverage; x < wall.length; x += panelCoverage) {
   const seamX = x * scale;
 
