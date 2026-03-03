@@ -276,7 +276,7 @@ for (let x = 0; x < wall.length; x += panelCoverage) {
   // ----- TOTAL WALL DIMENSION (BOTTOM) -----
 
 const dimY = 200; // below wall
-const dimPadding = 20;
+const dimPadding = 12;
 const startX = dimPadding;
 const endX = (wallLength * scale) - dimPadding;
 
