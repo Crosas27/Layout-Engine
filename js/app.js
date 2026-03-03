@@ -204,6 +204,49 @@ for (let x = panelCoverage; x < wall.length; x += panelCoverage) {
   svg.appendChild(seamLine);
 }
 
+// Draw top panel dimensions
+let dimYTop = 10;
+let tickTop = 18;
+
+for (let x = 0; x < wall.length; x += panelCoverage) {
+  const panelWidth = Math.min(panelCoverage, wall.length - x);
+  const startX = x * scale;
+  const endX = (x + panelWidth) * scale;
+  const midX = (startX + endX) / 2;
+
+  // Horizontal dimension line
+  const dimLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  dimLine.setAttribute("x1", startX);
+  dimLine.setAttribute("y1", dimYTop);
+  dimLine.setAttribute("x2", endX);
+  dimLine.setAttribute("y2", dimYTop);
+  dimLine.setAttribute("stroke", "#1f2933");
+  dimLine.setAttribute("stroke-width", "1.5");
+  svg.appendChild(dimLine);
+
+  // Tick marks
+  [startX, endX].forEach(pos => {
+    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    tick.setAttribute("x1", pos);
+    tick.setAttribute("y1", dimYTop);
+    tick.setAttribute("x2", pos);
+    tick.setAttribute("y2", tickTop);
+    tick.setAttribute("stroke", "#1f2933");
+    tick.setAttribute("stroke-width", "1.5");
+    svg.appendChild(tick);
+  });
+
+  // Text label
+  const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  text.setAttribute("x", midX);
+  text.setAttribute("y", dimYTop - 2);
+  text.setAttribute("text-anchor", "middle");
+  text.setAttribute("font-size", "12");
+  text.setAttribute("fill", "#1f2933");
+  text.textContent = formatToField(panelWidth);
+  svg.appendChild(text);
+}
+
   // Draw ribs
   ribs.forEach(rib => {
     const xPos = rib.position * scale;
