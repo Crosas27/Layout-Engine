@@ -217,4 +217,55 @@ for (let x = panelCoverage; x < wall.length; x += panelCoverage) {
 
     svg.appendChild(line);
   });
+  // ----- TOTAL WALL DIMENSION (BOTTOM) -----
+
+const dimY = 200; // below wall
+const startX = 0;
+const endX = wallLength * scale;
+
+// Dimension line
+const dimLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+dimLine.setAttribute("x1", startX);
+dimLine.setAttribute("y1", dimY);
+dimLine.setAttribute("x2", endX);
+dimLine.setAttribute("y2", dimY);
+dimLine.setAttribute("stroke", "#4FC3F7");
+dimLine.setAttribute("stroke-width", "2");
+
+svg.appendChild(dimLine);
+
+// Left tick
+const leftTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+leftTick.setAttribute("x1", startX);
+leftTick.setAttribute("y1", dimY - 8);
+leftTick.setAttribute("x2", startX);
+leftTick.setAttribute("y2", dimY + 8);
+leftTick.setAttribute("stroke", "#4FC3F7");
+leftTick.setAttribute("stroke-width", "2");
+
+svg.appendChild(leftTick);
+
+// Right tick
+const rightTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+rightTick.setAttribute("x1", endX);
+rightTick.setAttribute("y1", dimY - 8);
+rightTick.setAttribute("x2", endX);
+rightTick.setAttribute("y2", dimY + 8);
+rightTick.setAttribute("stroke", "#4FC3F7");
+rightTick.setAttribute("stroke-width", "2");
+
+svg.appendChild(rightTick);
+
+// Text label
+const dimText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+dimText.setAttribute("x", svgWidth / 2);
+dimText.setAttribute("y", dimY - 10);
+dimText.setAttribute("fill", "#4FC3F7");
+dimText.setAttribute("text-anchor", "middle");
+dimText.setAttribute("font-size", "14");
+
+dimText.textContent = formatToField(wallLength);
+
+svg.appendChild(dimText);
+  
 }
