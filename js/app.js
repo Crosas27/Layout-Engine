@@ -280,7 +280,7 @@ const startX = 0;
 const endX = wallLength * scale;
 
 // Dimension line
-const dimLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+const totalDimLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
 dimLine.setAttribute("x1", startX);
 dimLine.setAttribute("y1", dimY);
 dimLine.setAttribute("x2", endX);
@@ -291,7 +291,7 @@ dimLine.setAttribute("stroke-width", "2");
 svg.appendChild(dimLine);
 
 // Left tick
-const leftTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+const totalLeftTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
 leftTick.setAttribute("x1", startX);
 leftTick.setAttribute("y1", dimY - 8);
 leftTick.setAttribute("x2", startX);
@@ -302,7 +302,7 @@ leftTick.setAttribute("stroke-width", "2");
 svg.appendChild(leftTick);
 
 // Right tick
-const rightTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+const TotalRightTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
 rightTick.setAttribute("x1", endX);
 rightTick.setAttribute("y1", dimY - 8);
 rightTick.setAttribute("x2", endX);
@@ -313,7 +313,7 @@ rightTick.setAttribute("stroke-width", "2");
 svg.appendChild(rightTick);
 
 // Text label
-const dimText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+const totalDimText = document.createElementNS("http://www.w3.org/2000/svg", "text");
 dimText.setAttribute("x", svgWidth / 2);
 dimText.setAttribute("y", dimY - 10);
 dimText.setAttribute("fill", "#4FC3F7");
