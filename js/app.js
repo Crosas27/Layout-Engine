@@ -204,47 +204,61 @@ for (let x = panelCoverage; x < wall.length; x += panelCoverage) {
   svg.appendChild(seamLine);
 }
 
-// Draw top panel dimensions
-let dimYTop = 10;
-let tickTop = 18;
+// ----- PANEL DIMENSIONS (TOP) -----
+
+const panelDimY = 10; // above wall
+const panelCoverage = wall.panelCoverage;
 
 for (let x = 0; x < wall.length; x += panelCoverage) {
   const panelWidth = Math.min(panelCoverage, wall.length - x);
+
   const startX = x * scale;
   const endX = (x + panelWidth) * scale;
-  const midX = (startX + endX) / 2;
 
-  // Horizontal dimension line
+  // Dimension line
   const dimLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
   dimLine.setAttribute("x1", startX);
-  dimLine.setAttribute("y1", dimYTop);
+  dimLine.setAttribute("y1", panelDimY);
   dimLine.setAttribute("x2", endX);
-  dimLine.setAttribute("y2", dimYTop);
-  dimLine.setAttribute("stroke", "#1f2933");
+  dimLine.setAttribute("y2", panelDimY);
+  dimLine.setAttribute("stroke", "#B0BEC5");
   dimLine.setAttribute("stroke-width", "1.5");
+
   svg.appendChild(dimLine);
 
-  // Tick marks
-  [startX, endX].forEach(pos => {
-    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    tick.setAttribute("x1", pos);
-    tick.setAttribute("y1", dimYTop);
-    tick.setAttribute("x2", pos);
-    tick.setAttribute("y2", tickTop);
-    tick.setAttribute("stroke", "#1f2933");
-    tick.setAttribute("stroke-width", "1.5");
-    svg.appendChild(tick);
-  });
+  // Left tick
+  const leftTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  leftTick.setAttribute("x1", startX);
+  leftTick.setAttribute("y1", panelDimY - 6);
+  leftTick.setAttribute("x2", startX);
+  leftTick.setAttribute("y2", panelDimY + 6);
+  leftTick.setAttribute("stroke", "#B0BEC5");
+  leftTick.setAttribute("stroke-width", "1.5");
+
+  svg.appendChild(leftTick);
+
+  // Right tick
+  const rightTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  rightTick.setAttribute("x1", endX);
+  rightTick.setAttribute("y1", panelDimY - 6);
+  rightTick.setAttribute("x2", endX);
+  rightTick.setAttribute("y2", panelDimY + 6);
+  rightTick.setAttribute("stroke", "#B0BEC5");
+  rightTick.setAttribute("stroke-width", "1.5");
+
+  svg.appendChild(rightTick);
 
   // Text label
-  const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  text.setAttribute("x", midX);
-  text.setAttribute("y", dimYTop - 2);
-  text.setAttribute("text-anchor", "middle");
-  text.setAttribute("font-size", "12");
-  text.setAttribute("fill", "#1f2933");
-  text.textContent = formatToField(panelWidth);
-  svg.appendChild(text);
+  const dimText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  dimText.setAttribute("x", (startX + endX) / 2);
+  dimText.setAttribute("y", panelDimY - 4);
+  dimText.setAttribute("fill", "#CFD8DC");
+  dimText.setAttribute("text-anchor", "middle");
+  dimText.setAttribute("font-size", "12");
+
+  dimText.textContent = formatToField(panelWidth);
+
+  svg.appendChild(dimText);
 }
 
   // Draw ribs
