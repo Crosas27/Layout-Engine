@@ -276,8 +276,10 @@ for (let x = 0; x < wall.length; x += panelCoverage) {
   // ----- TOTAL WALL DIMENSION (BOTTOM) -----
 
 const dimY = 200; // below wall
-const startX = 0;
-const endX = wallLength * scale;
+const dimPadding = 20;
+const startX = dimPadding;
+const endX = (wallLength * scale) - dimPadding;
+
 
 // Dimension line
 const totalDimLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
