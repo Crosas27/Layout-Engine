@@ -207,7 +207,6 @@ for (let x = panelCoverage; x < wall.length; x += panelCoverage) {
 // ----- PANEL DIMENSIONS (TOP) -----
 
 const panelDimY = 10; // above wall
-const panelCoverage = wall.panelCoverage;
 
 for (let x = 0; x < wall.length; x += panelCoverage) {
   const panelWidth = Math.min(panelCoverage, wall.length - x);
