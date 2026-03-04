@@ -10,6 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function displayRibs(ribs){ 
+
+const panelCount = Math.ceil(wall.length / wall.panelCoverage);
+
+let html = `
+  <h3>Layout Summary</h3>
+  <div><strong>Total Panels:</strong> ${panelCount}</div>
+  <div><strong>Wall Length:</strong> ${formatToField(wall.length)}</div>
+  <hr>
+  <h3>Rib Layout</h3>
+  <ul>
+`;
+
 const container = document.getElementById("ribOutput");
   if (!container) return;
 
