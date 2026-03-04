@@ -34,17 +34,6 @@ function displayRibs(ribs){
     <ul>
   `;
 
-const container = document.getElementById("ribOutput");
-  if (!container) return;
-
-  if (ribs.length === 0) {
-    container.innerHTML = "<p>No ribs calculated.</p>";
-    return;}
-
-  const wall = project.walls[currentWallIndex];
-  const lastRib = ribs[ribs.length - 1];
-  const remaining = wall.length - lastRib.position;
-
   ribs.forEach(rib => {
     html += `
       <li>
