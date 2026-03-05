@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   wireUI();
 });
 
-function displayRibs_TEST(ribs){ 
+function displayRibs(ribs){ 
 
   const container = document.getElementById("ribOutput");
   if (!container) return;
